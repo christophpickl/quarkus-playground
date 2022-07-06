@@ -1,19 +1,19 @@
 # quarkus-playground
 
-Just in order to learn that java rest framework...
+Just in order to learn that Java ReST framework...
 
-Things to learn:
+## Todos
 
-* [ ] Endpoint definition + testing
-* [ ] CDI
-* [ ] swagger documentation on endpoints
-* [ ] metrics (smallrye)
-* [ ] application.properties
+* [x] Simple endpoint definition
+* [ ] Simple integration test
+* [ ] test with mocking
 * [ ] Jackson integration
+* [ ] CDI
 * [ ] Exception handling + custom mapping
-
-## Things to know
-
+* [ ] Swagger documentation on endpoints
+* [ ] Metrics (smallrye)
+* [ ] Better testing solution
+* [ ] Start app from IDE
 
 ## References
 

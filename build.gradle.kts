@@ -25,24 +25,15 @@ dependencies {
 	implementation(enforcedPlatform("io.quarkus.platform:quarkus-bom:${Versions.quarkus}"))
 	implementation(Dependencies.Quarkus.resteasy)
 	implementation(Dependencies.Quarkus.kotlin)
-	//	implementation("io.quarkus:quarkus-resteasy-jackson")
-	// quarkus DB
+	// implementation("io.quarkus:quarkus-resteasy-jackson")
+	// quarkus DB ...
 	// quarkusDev("io.quarkus:quarkus-jdbc-h2")
 
-	/*
 	testImplementation("io.quarkus:quarkus-junit5")
     testImplementation("io.quarkus:quarkus-junit5-mockito")
     testImplementation("org.mockito.kotlin:mockito-kotlin:4.0.0")
     testImplementation("io.rest-assured:rest-assured")
-	 */
 }
-
-allOpen {
-	annotation("javax.ws.rs.Path")
-	annotation("javax.enterprise.context.ApplicationScoped")
-	annotation("io.quarkus.test.junit.QuarkusTest")
-}
-
 
 java {
 	sourceCompatibility = JavaVersion.VERSION_11
@@ -52,4 +43,10 @@ java {
 tasks.withType<JavaCompile> {
 	options.encoding = "UTF-8"
 	options.compilerArgs.add("-parameters")
+}
+
+allOpen {
+	annotation("javax.ws.rs.Path")
+	annotation("javax.enterprise.context.ApplicationScoped")
+	annotation("io.quarkus.test.junit.QuarkusTest")
 }
