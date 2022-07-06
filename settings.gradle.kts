@@ -1,0 +1,1 @@
+// quarkus configured here, see: https://quarkus.io/guides/gradle-config
