@@ -3,6 +3,9 @@ plugins {
 }
 
 dependencies {
-		implementation(kotlin("stdlib-jdk8"))
-		implementation(kotlin("reflect"))
+	implementation(kotlin("stdlib"))
+}
+
+repositories {
+	mavenCentral()
 }
