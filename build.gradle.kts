@@ -11,7 +11,7 @@ plugins {
 
 dependencies {
 	implementation(kotlin("stdlib"))
-	implementation(enforcedPlatform("io.quarkus.platform:quarkus-bom:${Versions.quarkus}"))
+	implementation(enforcedPlatform(Dependencies.Quarkus.bom))
 	implementation(Dependencies.Quarkus.resteasy)
 	implementation(Dependencies.Quarkus.kotlin)
 	implementation(Dependencies.Quarkus.jackson)
@@ -19,10 +19,11 @@ dependencies {
 	// quarkus DB ...
 	// quarkusDev("io.quarkus:quarkus-jdbc-h2")
 
-	testImplementation("io.quarkus:quarkus-junit5")
-    testImplementation("io.quarkus:quarkus-junit5-mockito")
-    testImplementation("org.mockito.kotlin:mockito-kotlin:4.0.0")
-    testImplementation("io.rest-assured:rest-assured")
+	testImplementation(Dependencies.Quarkus.junit)
+	testImplementation(Dependencies.Quarkus.mockito)
+	testImplementation(Dependencies.mockito)
+	testImplementation(Dependencies.restAssured)
+	testImplementation(Dependencies.hamkrest)
 }
 
 java {
