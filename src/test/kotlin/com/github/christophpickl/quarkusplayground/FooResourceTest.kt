@@ -10,15 +10,17 @@ import org.junit.jupiter.api.Test
 
 @QuarkusTest
 class FooResourceTest {
+
+    // FIXME @InjectMock
+
     @Test
     fun `When get foo Then return json`() {
-        // FIXME needs to register jackson serializer first
-        given()
-            .`when`()
-            .get("/foo/1")
+        given().`when`().get("/foo/1")
+
             .then()
             .statusCode(200)
             .contentType(ContentType.JSON)
-            .body("message", equalTo("hello"))
+            .body("id", equalTo(1))
+            .body("name", equalTo("bar"))
     }
 }

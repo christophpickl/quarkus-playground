@@ -17,13 +17,14 @@ class RootResource {
 @Path("/foo")
 @Produces(MediaType.APPLICATION_JSON)
 class FooResource {
+    @GET
     @Path("/{id}")
-    fun findFoo(
+    fun getSingle(
         @PathParam("id") id: Int
-    ) = Foo(id,"bar")
+    ) = FooDto(id,"bar")
 }
 
-data class Foo(
+data class FooDto(
     val id: Int,
     val name: String
 )

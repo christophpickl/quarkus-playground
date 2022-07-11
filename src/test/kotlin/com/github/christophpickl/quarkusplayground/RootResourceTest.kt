@@ -12,7 +12,6 @@ import org.junit.jupiter.api.Test
 
 @QuarkusTest
 class RootResourceTest {
-    // @InjectMock
 
     @Test
     fun `When call root endpoint Then return 200 and proper body`() {

@@ -9,23 +9,13 @@ plugins {
 	id("io.quarkus") version "2.10.2.Final"
 }
 
-object Versions {
-	val quarkus = "2.10.1.Final" // "2.10.2.Final" ... not found :-( https://repo.maven.apache.org/maven2/io/quarkus/platform/quarkus-bom/
-}
-object Dependencies {
-	object Quarkus {
-		private fun dependency(artifactIdSuffix: String) = "io.quarkus:quarkus-$artifactIdSuffix:${Versions.quarkus}"
-		val resteasy = dependency("resteasy")
-		val kotlin = dependency("kotlin")
-	}
-}
-
 dependencies {
 	implementation(kotlin("stdlib"))
 	implementation(enforcedPlatform("io.quarkus.platform:quarkus-bom:${Versions.quarkus}"))
 	implementation(Dependencies.Quarkus.resteasy)
 	implementation(Dependencies.Quarkus.kotlin)
-	// implementation("io.quarkus:quarkus-resteasy-jackson")
+	implementation(Dependencies.Quarkus.jackson)
+	implementation(Dependencies.Jackson.kotlin)
 	// quarkus DB ...
 	// quarkusDev("io.quarkus:quarkus-jdbc-h2")
 
