@@ -2,25 +2,22 @@ package com.github.christophpickl.quarkusplayground
 
 import javax.enterprise.context.ApplicationScoped
 
-@JvmInline
-value class FooId(val value: Int)
-
-data class Foo(
-    val id: FooId,
-    val name: String
-)
-
-interface FooService {
-    fun find(id: FooId): Foo?
+interface StoreService {
+    fun fetchAll(): Collection<Store>
+    fun find(id: StoreId): Store?
 }
 
 //@Traced
 //@Transactional(Transactional.TxType.REQUIRED)
 @ApplicationScoped
-class InMemoryFooService : FooService {
-    private val foos = mapOf(
-        FooId(1) to Foo(FooId(1), "bar")
-    )
+class InMemoryStoreService : StoreService {
 
-    override fun find(id: FooId) = foos[id]
+    private val stores = listOf(
+        Store(StoreId(1), "foo"),
+        Store(StoreId(2), "bar")
+    ).associateBy { it.id }
+
+    override fun fetchAll() = stores.values
+
+    override fun find(id: StoreId) = stores[id]
 }

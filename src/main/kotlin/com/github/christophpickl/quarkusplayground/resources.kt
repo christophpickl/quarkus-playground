@@ -15,25 +15,33 @@ class RootResource {
     fun sayHello() = "Hello Quarkus!"
 }
 
-@Path("/foo")
+@Path("/store")
 @Produces(MediaType.APPLICATION_JSON)
-class FooResource(
-    private val service: FooService
+class StoreResource(
+    private val service: StoreService
 ) {
+
+    @GET
+    @Path("/")
+    fun getAll(): Response {
+        val stores = StoresDto(service.fetchAll().map { it.toStoreDto() })
+        return Response.ok(stores).build()
+    }
 
     @GET
     @Path("/{id}")
     fun getSingle(
         @PathParam("id") id: Int
-    ) = (service.find(FooId(id))?.let { found ->
-        Response.ok(found.toFooDto())
-    } ?: Response.status(404)).build()
+    ): Response {
+        val found = service.find(StoreId(id))
+        return if (found == null) {
+            Response.status(404).build()
+        } else {
+            Response.ok(found.toStoreDto()).build()
+        }
+    }
+
+    private fun Store.toStoreDto() = StoreDto(
+        id = id.value, name = name
+    )
 }
-
-private fun Foo.toFooDto() = FooDto(
-    id = id.value, name = name
-)
-
-data class FooDto(
-    val id: Int, val name: String
-)

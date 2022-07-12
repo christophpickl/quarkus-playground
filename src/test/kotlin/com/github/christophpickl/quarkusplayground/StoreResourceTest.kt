@@ -7,13 +7,13 @@ import org.hamcrest.CoreMatchers.equalTo
 import org.junit.jupiter.api.Test
 
 @QuarkusTest
-class FooResourceTest {
+class StoreResourceTest {
 
     // FIXME @InjectMock
 
     @Test
-    fun `When get existing foo Then return ok json`() {
-        given().`when`().get("/foo/1")
+    fun `When get existing store Then return ok json`() {
+        given().`when`().get("/store/1")
 
             .then()
             .statusCode(200)
@@ -23,8 +23,8 @@ class FooResourceTest {
     }
 
     @Test
-    fun `When get non-existing foo Then return 404`() {
-        given().`when`().get("/foo/42")
+    fun `When get non-existing store Then return 404`() {
+        given().`when`().get("/store/42")
 
             .then()
             .statusCode(404)
