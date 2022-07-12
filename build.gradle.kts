@@ -1,12 +1,15 @@
+import com.github.benmanes.gradle.versions.updates.DependencyUpdatesTask
+
 repositories {
 	mavenCentral()
 }
 
 plugins {
-	kotlin("jvm") version "1.6.21"//"1.7.0"
-	kotlin("plugin.allopen") version "1.6.21" //"1.7.0"
-//	kotlin("plugin.jpa") version "1.5.21"
-	id("io.quarkus") version "2.10.2.Final"
+	kotlin("jvm") version Versions.Plugins.kotlin
+	kotlin("plugin.allopen") version Versions.Plugins.allOpen
+//	kotlin("plugin.jpa") version Versions.Plugins.jpa
+	id("io.quarkus") version Versions.Plugins.quarkus
+	id("com.github.ben-manes.versions") version Versions.Plugins.versions
 }
 
 dependencies {
@@ -16,7 +19,6 @@ dependencies {
 	implementation(Dependencies.Quarkus.kotlin)
 	implementation(Dependencies.Quarkus.jackson)
 	implementation(Dependencies.Jackson.kotlin)
-	// quarkus DB ...
 	// quarkusDev("io.quarkus:quarkus-jdbc-h2")
 
 	testImplementation(Dependencies.Quarkus.junit)
@@ -40,4 +42,12 @@ allOpen {
 	annotation("javax.ws.rs.Path")
 	annotation("javax.enterprise.context.ApplicationScoped")
 	annotation("io.quarkus.test.junit.QuarkusTest")
+}
+
+tasks.withType<DependencyUpdatesTask> {
+	val rejectPatterns = listOf("alpha", "beta", "EAP", "RC", "m").map { it.toLowerCase() }
+	rejectVersionIf {
+		val version = candidate.version.toLowerCase()
+		rejectPatterns.any { version.contains(it) }
+	}
 }
