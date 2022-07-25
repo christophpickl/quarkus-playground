@@ -4,15 +4,16 @@ Just in order to learn that Java ReST framework...
 
 ## Todos
 
-* [x] Simple endpoint definition
-* [ ] Simple integration test
-* [ ] test with mocking
-* [ ] Jackson integration
-* [ ] CDI
+* [x] Endpoint definition
+* [x] Integration test
+* [x] Tests with mocking
+* [x] Jackson integration
+* [x] CDI
+* [ ] Persistence (Hibernate, JPA, H2)
+* [ ] More data types (date, money)
 * [ ] Exception handling + custom mapping
 * [ ] Swagger documentation on endpoints
 * [ ] Metrics (smallrye)
-* [ ] Better testing solution
 * [ ] Start app from IDE
 
 ## References

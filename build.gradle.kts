@@ -24,7 +24,8 @@ dependencies {
 	testImplementation(Dependencies.Quarkus.junit)
 	testImplementation(Dependencies.Quarkus.mockito)
 	testImplementation(Dependencies.mockito)
-	testImplementation(Dependencies.restAssured)
+	testImplementation(Dependencies.RestAssured.restAssured)
+	testImplementation(Dependencies.RestAssured.kotlinExtensions)
 	testImplementation(Dependencies.hamkrest)
 }
 

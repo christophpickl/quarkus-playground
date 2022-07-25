@@ -8,9 +8,11 @@ object Dependencies {
         val junit = dependency("junit5")
         val mockito = dependency("junit5-mockito")
     }
+
     object Jackson {
         private fun dependency(groupSuffix: String, artifactIdSuffix: String) =
             "com.fasterxml.jackson.${groupSuffix}:jackson-${groupSuffix}-$artifactIdSuffix:${Versions.jackson}"
+
         val kotlin = dependency("module", "kotlin")
 //        val jsr310 = dependency("datatype", "jsr310")
 //        val joda = dependency("datatype", "joda")
@@ -18,6 +20,12 @@ object Dependencies {
     }
 
     val mockito = "org.mockito.kotlin:mockito-kotlin:${Versions.mockito}"
-    val restAssured = "io.rest-assured:rest-assured:${Versions.restAssured}"
+
+    object RestAssured {
+        private fun dependency(artifactId: String) = "io.rest-assured:$artifactId:${Versions.restAssured}"
+        val restAssured = dependency("rest-assured")
+        val kotlinExtensions = dependency("kotlin-extensions")
+    }
+
     val hamkrest = "com.natpryce:hamkrest:${Versions.hamkrest}"
 }

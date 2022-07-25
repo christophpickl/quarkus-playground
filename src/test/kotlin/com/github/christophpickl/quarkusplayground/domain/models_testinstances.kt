@@ -1,4 +1,4 @@
-package com.github.christophpickl.quarkusplayground
+package com.github.christophpickl.quarkusplayground.domain
 
 val StoreId.Companion.any get() = StoreId(42)
 
